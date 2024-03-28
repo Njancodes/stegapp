@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StegaRust</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body style="background-color: rgb(78, 78, 78); box-sizing: border-box; margin: 0;">
+
+    <div class="header">
+        <h1 style="color: whitesmoke;">StegaRust</h1>
+        <img src="">
+    </div>
+    <hr style="color: black;border: 2px solid black; ">
+    <div class="select">
+        <label class="file-upload">
+            <input type="file" id="image-upload" accept="image/png, image/jpeg">
+            Upload Image
+        </label>
+        <span style="color: whitesmoke;" id="file_name">
+            No Image
+        </span>
+        <div class="buttons">
+            <button id="encode-btn">
+                Encode
+            </button>
+            <button id="decode-btn">
+                Decode
+            </button>
+        </div>
+    </div>
+    
+
+    <canvas id="image-canvas"></canvas>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>
