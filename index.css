@@ -1,5 +1,3 @@
-
-
 .header{
     display: flex;
     align-items: center;
@@ -13,29 +11,33 @@
 }
 
 #encode-btn:hover{
-    border: 1px solid grey;
-    color: whitesmoke;
-    background-color: rgb(110, 110, 110);
+    border: 0px;
+    color: #E3DFFF;
+    background-color: #D64933;
 }
 
 #decode-btn:hover{
-    border: 1px solid grey;
-    color: whitesmoke;
-    background-color: rgb(110, 110, 110);
+    border: 0px;
+    color: #E3DFFF;
+    background-color: #D64933;
 }
 
 .encode-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: whitesmoke;
+    color: #E3DFFF;
+
 }
+
+
+
 
 .decode-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: whitesmoke;
+    color: #E3DFFF;
 }
 
 
@@ -58,33 +60,34 @@ input[type="file"] {
 
 #submit-btn{
     margin: 10px;
-    background-color: white;
-    border: 1px solid grey;
+    background-color: #BDBF09;
     border-radius: 15px;
+    border: 0px;
+    color: #481E14;
     padding: 10px;
 }
 #submit-btn:hover{
     margin: 10px;
-    background-color: rgb(110, 110, 110);
-    color: whitesmoke;
-    border: 1px solid grey;
+    background-color: #D64933;
+    color: #E3DFFF;
+    border: 0px;
     border-radius: 15px;
     padding: 10px;
 }
   
 .file-upload {
-    border: 1px solid #ccc;
-    background-color: rgb(224, 224, 224);
+    background-color: #BDBF09;
     display: inline-block;
+    color: #481E14;
     border-radius: 15px;
     padding: 6px 12px;
     cursor: pointer;
 }
 
 .file-upload:hover{
-    color: whitesmoke;
-    border: 1px solid grey;
-    background-color: rgb(110, 110, 110);
+    color: #E3DFFF;
+    border: 0px;
+    background-color: #D64933;
     display: inline-block;
     border-radius: 15px;
     padding: 6px 12px;
@@ -94,7 +97,9 @@ input[type="file"] {
 .buttons * {
     margin: 0px 100px;
     padding: 10px;
-    background-color: white;
-    border: 1px solid grey;
+    background-color: #BDBF09;
+    color: #481E14;
+    border: 0px;
     border-radius: 15px;
 }
+

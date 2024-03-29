@@ -42,7 +42,7 @@ async function run(){
         const submitBtn = document.createElement('button');
          if(!document.body.contains(document.querySelector(".encode-container")) && file_name != undefined){
             const hrLine = document.createElement('hr');
-            hrLine.style = "border: 2px solid black;width: 100%;"
+            hrLine.style = "border: 2px solid #D64933;width: 100%;"
 
             const encodeContainer = document.createElement('div');
             encodeContainer.className = "encode-container"
@@ -103,7 +103,7 @@ async function run(){
 
         if(!document.body.contains(document.querySelector(".decode-container")) && file_name != undefined){
             const hrLine = document.createElement('hr');
-            hrLine.style = "border: 2px solid black;width: 100%;"
+            hrLine.style = "border: 2px solid #D64933;width: 100%;"
 
             const decodeContainer = document.createElement('div');
             decodeContainer.className = "decode-container"
