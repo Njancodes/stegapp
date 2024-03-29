@@ -38,7 +38,9 @@ async function run(){
 
     encodeBtn.addEventListener('click', (event)=>{
         console.log("Encode");
-
+        const encodeContainer = document.createElement('div');
+        const spanFileName = document.querySelector('span#file_name');
+        const pwdInputEle = document.createElement('input');
         if(document.body.contains(document.querySelector(".decode-container"))){
             document.body.removeChild(document.querySelector(".decode-container"))
         }
@@ -48,12 +50,12 @@ async function run(){
             const hrLine = document.createElement('hr');
             hrLine.style = "border: 2px solid #D64933;width: 100%;"
 
-            const encodeContainer = document.createElement('div');
             encodeContainer.className = "encode-container"
 
+            const infoEle = document.querySelector('.info')
 
             const spanFileName = document.createElement('span');
-            spanFileName.textContent = `Embedding to ${file_name}`;
+            spanFileName.textContent = `Writing to ${file_name}`;
             spanFileName.style = "font-weight: bolder;";
             const secretLabelEle = document.createElement('label');
             secretLabelEle.id = "secret-label"
@@ -62,30 +64,35 @@ async function run(){
             secretInputEle.type = "text";
             secretInputEle.placeholder = "Message To Hide";
             secretInputEle.id = "secret-input";
-            secretLabelEle.appendChild(secretInputEle)
+
 
             const pwdLabelEle = document.createElement('label');
             pwdLabelEle.id = "pwd-label"
             pwdLabelEle.textContent = "Enter Password";
-            const pwdInputEle = document.createElement('input');
             pwdInputEle.type = "text";
             pwdInputEle.placeholder = "Protect The Message";
             pwdInputEle.id = "pwd-input"; 
-            pwdLabelEle.appendChild(pwdInputEle)
+
+            secretInputEle.addEventListener('keydown',(ev)=>{
+                if(ev.key == "Enter"){
+                    pwdInputEle.focus();
+                }
+            })
 
             submitBtn.id = "submit-btn"
-            submitBtn.textContent = "Embed To Image & Download"
+            submitBtn.textContent = "Write To Image & Download"
     
 
+            secretLabelEle.appendChild(secretInputEle)
+            pwdLabelEle.appendChild(pwdInputEle)
             encodeContainer.appendChild(hrLine);
             encodeContainer.appendChild(spanFileName);
             encodeContainer.appendChild(secretLabelEle);
             encodeContainer.appendChild(pwdLabelEle);
             encodeContainer.appendChild(submitBtn)
 
-
-            document.body.appendChild(encodeContainer)
-        }else{
+            document.body.insertBefore(encodeContainer, infoEle)
+        }else if(file_name == undefined){
             console.log("Add")
             if(document.body.contains(document.querySelector(".upload-warning"))){
                 let selectEle = document.querySelector('div.select');
@@ -96,15 +103,24 @@ async function run(){
             h2Ele.className = 'upload-warning'
             h2Ele.textContent = "Please Upload an Image"
             selectEle.appendChild(h2Ele);
-            document.body.appendChild(selectEle);
         }
 
         
         const secretInput = document.getElementById('secret-input');
         const pwdInput = document.getElementById('pwd-input');
 
+        pwdInputEle.addEventListener('keydown',(ev)=>{
+            if(ev.key == "Enter"){
+                encode(secretInput.value, pwdInput.value);
+                encodeContainer.remove();
+                spanFileName.textContent = "No Image";
+            }
+        })
+
         submitBtn.addEventListener('click', ()=>{
             encode(secretInput.value, pwdInput.value);
+            encodeContainer.remove();
+            spanFileName.textContent = "No Image";
         })
 
         
@@ -113,6 +129,7 @@ async function run(){
     decodeBtn.addEventListener('click', () => {
         console.log("Decode");
         const submitBtn = document.createElement('button');
+        const pwdInputEle = document.createElement('input');
         if(document.body.contains(document.querySelector(".encode-container"))){
             document.body.removeChild(document.querySelector(".encode-container"))
         }
@@ -120,6 +137,9 @@ async function run(){
         if(!document.body.contains(document.querySelector(".decode-container")) && file_name != undefined){
             const hrLine = document.createElement('hr');
             hrLine.style = "border: 2px solid #D64933;width: 100%;"
+
+
+            const infoEle = document.querySelector('.info')
 
             const decodeContainer = document.createElement('div');
             decodeContainer.className = "decode-container"
@@ -132,18 +152,22 @@ async function run(){
             secretLabelEle.id = "secret-label"
             secretLabelEle.textContent = "Secret Message";
 
+
             const pwdLabelEle = document.createElement('label');
             pwdLabelEle.id = "pwd-label"
             pwdLabelEle.textContent = "Enter Password";
-            const pwdInputEle = document.createElement('input');
             pwdInputEle.type = "text";
             pwdInputEle.placeholder = "Enter The Password";
             pwdInputEle.id = "pwd-input"; 
             pwdInputEle.value = "";
+
+
+
+
             pwdLabelEle.appendChild(pwdInputEle)
 
             submitBtn.id = "submit-btn"
-            submitBtn.textContent = "Get The Message From The Image"
+            submitBtn.textContent = "Read Message From Image"
     
 
             decodeContainer.appendChild(hrLine);
@@ -153,8 +177,9 @@ async function run(){
             decodeContainer.appendChild(secretLabelEle);
 
 
-            document.body.appendChild(decodeContainer)
-        }else{
+            
+            document.body.insertBefore(decodeContainer, infoEle)
+        }else if(file_name == undefined){
             console.log("Add")
             if(document.body.contains(document.querySelector(".upload-warning"))){
                 let selectEle = document.querySelector('div.select');
@@ -164,13 +189,25 @@ async function run(){
             let h2Ele = document.createElement('h2');
             h2Ele.className = 'upload-warning'
             h2Ele.textContent = "Please Upload an Image"
-            selectEle.appendChild(h2Ele);
-            document.body.appendChild(selectEle);
+            //selectEle.appendChild(h2Ele);
+            selectEle.insertAdjacentElement('beforeend', h2Ele)
         }
 
         const secretLabelEle = document.getElementById('secret-label');        
         const pwdInput = document.getElementById('pwd-input');
  
+
+        pwdInputEle.addEventListener('keydown',(ev)=>{
+            if(ev.key == "Enter"){
+                let message = decode(pwdInput.value);
+                if(message == ""){
+                    secretLabelEle.textContent = "Password Is Incorrect";
+                }else{
+                    secretLabelEle.textContent = `Secret Message: ${message}`;
+                }
+            }
+        })
+
         submitBtn.addEventListener('click', ()=>{
             let message = decode(pwdInput.value);
             if(message == ""){

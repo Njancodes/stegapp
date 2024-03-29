@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StegaRust</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body style="background-color: #481e14; box-sizing: border-box; margin: 0;">
 
     <div class="header">
@@ -30,10 +32,46 @@
             </button>
         </div>
     </div>
+
+    <div class="info">
+        <hr style="border: 2px solid #D64933; width: 100%;">
+
+        <h2>
+            How It Works ?
+        </h2>
+        <p>
+            Step 1: You first upload an image using the "Upload Image" Button. <br>
+            ( The image you upload detemines whether to write a message to it or read a message from it. )
+            <br>
+            Step 2: Then press the "Write To Image" or "Read From Image" button,
+        
+        </p>
     
+        <h2>
+            Writing to an Image ?
+        </h2>
+        <p>
+            Step 1: Enter the secret message to be written into the file. <br>
+            Step 2: Enter the password to secure the message into the image. <br>
+            Step 3: "Write To Image & Download" Button to get the Image.    
+        </p>
+    
+        <h2>
+            Reading from an Image ?
+        </h2>
+        <p>
+            Step 1: Enter the password to get the message from the image. <br>
+            Step 2: Press the "Read the Message from the Image" button" <br>
+            Step 3: The message will be printed besides the "Secret Message: "
+        
+        </p>
+    </div>
+   
+
 
     <canvas id="image-canvas"></canvas>
 
     <script type="module" src="index.js"></script>
 </body>
+
 </html>

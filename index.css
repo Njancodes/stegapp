@@ -4,6 +4,22 @@
     justify-content: center;
 }
 
+.info{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+p{
+    color: #E3DFFF;
+}
+
+h2{
+    text-decoration: underline;
+    color: #E3DFFF;
+}
+
+
 .select{
     display: flex;
     flex-direction: column;
