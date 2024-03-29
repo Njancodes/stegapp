@@ -16,6 +16,10 @@ async function run(){
 
     imageUpload.addEventListener('change', async (event) => {
         const file = event.target.files[0]
+        if(document.body.contains(document.querySelector(".upload-warning"))){
+            let selectEle = document.querySelector('div.select');
+            selectEle.removeChild(document.querySelector(".upload-warning"))
+        }
         file_name = file.name
         const show_file_name = document.getElementById("file_name");
         show_file_name.textContent = file_name;
@@ -81,6 +85,18 @@ async function run(){
 
 
             document.body.appendChild(encodeContainer)
+        }else{
+            console.log("Add")
+            if(document.body.contains(document.querySelector(".upload-warning"))){
+                let selectEle = document.querySelector('div.select');
+                selectEle.removeChild(document.querySelector(".upload-warning"))
+            }
+            let selectEle = document.querySelector('div.select');
+            let h2Ele = document.createElement('h2');
+            h2Ele.className = 'upload-warning'
+            h2Ele.textContent = "Please Upload an Image"
+            selectEle.appendChild(h2Ele);
+            document.body.appendChild(selectEle);
         }
 
         
@@ -138,6 +154,18 @@ async function run(){
 
 
             document.body.appendChild(decodeContainer)
+        }else{
+            console.log("Add")
+            if(document.body.contains(document.querySelector(".upload-warning"))){
+                let selectEle = document.querySelector('div.select');
+                selectEle.removeChild(document.querySelector(".upload-warning"))
+            }
+            let selectEle = document.querySelector('div.select');
+            let h2Ele = document.createElement('h2');
+            h2Ele.className = 'upload-warning'
+            h2Ele.textContent = "Please Upload an Image"
+            selectEle.appendChild(h2Ele);
+            document.body.appendChild(selectEle);
         }
 
         const secretLabelEle = document.getElementById('secret-label');        
