@@ -2,6 +2,8 @@ A WASM web application that can write a message into a chosen image, secured by 
 
 ![coverimage-rust](https://github.com/Njancodes/stegarust/assets/105363470/47488e4c-1958-4d27-bc95-f98f27ef0208)
 
+![Watch The Demo](https://youtu.be/hyd1_ti3Bqg)
+
 **Try The App**
 
 https://njancodes.github.io/stegapp/
